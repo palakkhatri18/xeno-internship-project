@@ -65,7 +65,7 @@ app.get('/api/customers', async (req, res) => {
         first_name: customer.first_name,
         last_name: customer.last_name,
         email: customer.email,
-        total_spent: parseFloat(customer.total_spent) // FIX: Convert string to a number
+        total_spent: parseFloat(customer.total_spent.replace(/[^0-9.]/g, ''))
       });
     }
     res.json({ status: 'success', message: `Ingested ${customers.length} customers.` });
