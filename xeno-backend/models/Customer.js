@@ -1,9 +1,10 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Product = sequelize.define('Product', {
+const Customer = sequelize.define('Customer', {
   shopify_id: { type: DataTypes.BIGINT, allowNull: false, primaryKey: true },
-  title: { type: DataTypes.STRING, allowNull: false },
-  vendor: { type: DataTypes.STRING },
-  product_type: { type: DataTypes.STRING }
+  first_name: { type: DataTypes.STRING },
+  last_name: { type: DataTypes.STRING },
+  email: { type: DataTypes.STRING },
+  total_spent: { type: DataTypes.DECIMAL(10, 2) }
 }, { timestamps: false });
-module.exports = Product;
+module.exports = Customer;
