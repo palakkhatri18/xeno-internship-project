@@ -6,7 +6,7 @@ function TopCustomers() {
   useEffect(() => {
     const fetchTopCustomers = async () => {
       try {
-        const response = await axios.get('https://xeno-internship-project.onrender.com');
+        const response = await axios.get('https://xeno-internship-project.onrender.com/api/dashboard/top-customers');
         setCustomers(response.data);
       } catch (error) { console.error("Error fetching top customers:", error); } 
       finally { setLoading(false); }
