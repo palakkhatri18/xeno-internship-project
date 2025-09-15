@@ -1,9 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const axios =require('axios');
+const axios = require('axios');
 const { Op } = require('sequelize');
 const sequelize = require('./config/database');
-const cors = require('cors');
+const cors = require('cors'); // Import the cors package
 
 const Product = require('./models/Product');
 const Customer = require('./models/Customer');
@@ -13,7 +13,7 @@ const shopifyAccessToken = process.env.SHOPIFY_API_ACCESS_TOKEN;
 const shopifyStoreDomain = process.env.SHOPIFY_STORE_DOMAIN;
 
 const app = express();
-app.use(cors());
+app.use(cors()); // Use the cors middleware to allow requests from your frontend
 app.use(express.json());
 const port = 3000;
 
@@ -29,14 +29,13 @@ app.post('/api/webhooks/order-created', async (req, res) => {
       customer_id: order.customer ? order.customer.id : null,
       created_at: order.created_at
     });
-    console.log(` Order ${order.id} ingested via webhook.`);
+    console.log(`✅ Order ${order.id} ingested via webhook.`);
     res.status(200).send('Webhook received');
   } catch (error) {
     console.error('Error processing order-created webhook:', error.message);
     res.status(500).send('Error processing webhook');
   }
 });
-
 
 // --- INGESTION ENDPOINTS ---
 app.get('/api/products', async (req, res) => {
@@ -97,9 +96,9 @@ app.get('/api/dashboard/orders-by-date', async (req, res) => {
 async function startServer() {
   try {
     await sequelize.sync();
-    console.log(' Database synchronized');
+    console.log('✅ Database synchronized');
     app.listen(port, () => {
-      console.log(` Server is running on http://localhost:${port}`);
+      console.log(`✅ Server is running on http://localhost:${port}`);
     });
   } catch (error) { console.error('Unable to sync database:', error); }
 }
