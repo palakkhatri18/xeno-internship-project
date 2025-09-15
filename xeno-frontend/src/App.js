@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const fetchSummary = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/dashboard/summary');
+        const response = await axios.get('https://xeno-internship-project.onrender.com/api/dashboard/summary');
         setSummary(response.data);
       } catch (error) { console.error("Error fetching summary data:", error); } 
       finally { setLoading(false); }
