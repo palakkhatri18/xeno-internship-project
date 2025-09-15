@@ -13,7 +13,7 @@ function OrdersChart() {
     const fetchOrdersByDate = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:3000/api/dashboard/orders-by-date', { params: { startDate, endDate } });
+        const response = await axios.get('https://xeno-backend-drab.vercel.app/', { params: { startDate, endDate } });
         const orders = response.data;
         const countsByDate = {};
         orders.forEach(order => { const date = getISODate(new Date(order.created_at)); countsByDate[date] = (countsByDate[date] || 0) + 1; });

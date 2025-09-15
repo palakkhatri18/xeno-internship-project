@@ -6,7 +6,7 @@ function TopCustomers() {
   useEffect(() => {
     const fetchTopCustomers = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/dashboard/top-customers');
+        const response = await axios.get('https://xeno-backend-drab.vercel.app/');
         setCustomers(response.data);
       } catch (error) { console.error("Error fetching top customers:", error); } 
       finally { setLoading(false); }
