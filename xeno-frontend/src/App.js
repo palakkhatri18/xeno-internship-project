@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const fetchSummary = async () => {
       try {
-        const response = await axios.get('https://xeno-backend-drab.vercel.app/');
+        const response = await axios.get('https://xeno-internship-project.onrender.com');
         setSummary(response.data);
       } catch (error) { console.error("Error fetching summary data:", error); } 
       finally { setLoading(false); }
