@@ -70,7 +70,7 @@ app.get('/api/customers', async (req, res) => {
     }
     res.json({ status: 'success', message: `Ingested ${customers.length} customers.` });
   } catch (error) {
-    // It's good practice to log the detailed error to the console for debugging
+    
     console.error('Failed to ingest customers:', error.message);
     res.status(500).json({ error: 'Failed to ingest customers' });
   }
@@ -133,9 +133,9 @@ app.get('/api/dashboard/orders-by-date', async (req, res) => {
 async function startServer() {
   try {
     await sequelize.sync();
-    console.log('✅ Database synchronized');
+    console.log(' Database synchronized');
     app.listen(port, () => {
-      console.log(`✅ Server is running on http://localhost:${port}`);
+      console.log(` Server is running on http://localhost:${port}`);
     });
   } catch (error) {
     console.error('Unable to sync database:', error);
